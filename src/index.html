@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+    <title>Stencil Component Starter</title>
+
+    <script type="module" src="/build/stencil-map.esm.js"></script>
+    <script nomodule src="/build/stencil-map.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+</head>
+<body>
+
+<!-- Get your api key here: https://console.cloud.google.com/google/maps-apis -->
+<map-component api-key="[Put Google API Key Here]"
+               cluster="true" fit-locations="true"></map-component>
+
+<script>
+    axios.get('https://raw.githubusercontent.com/GEOwidget/geowidget-project/master/geowidget-js/customers/mygolf/config.json').then((result) => {
+        const locations = result.data.locations;
+        const map = document.querySelector('map-component');
+        map.locations = locations;
+    });
+</script>
+</body>
+</html>
